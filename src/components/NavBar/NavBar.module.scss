@@ -1,0 +1,40 @@
+@import '../../styles/settings.scss';
+
+.navbar {
+  background-color: darken($color-dark, 3%); /* Użycie darken do dostosowania koloru tła */
+  color: white;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between; /* Rozstawienie elementów na przeciwnych stronach */
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+.navbar-icon-link {
+  text-decoration: none;
+  color: white;
+  font-size: 24px; /* Ustawienie font-size na 24px */
+}
+
+.navbar-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+
+.navbar-list li {
+  margin-right: 20px;
+}
+
+.navbar-list a {
+  text-decoration: none;
+  color: white;
+}
+
+.navbar-list a:hover {
+  text-decoration: underline;
+}
