@@ -17,7 +17,7 @@
 .navbar-icon-link {
   text-decoration: none;
   color: white;
-  font-size: 24px; /* Ustawienie font-size na 24px */
+  font-size: 24px; 
 }
 
 .navbar-list {
@@ -35,6 +35,6 @@
   color: white;
 }
 
-.navbar-list a:hover {
-  text-decoration: underline;
+.navbar-list a.linkActive {
+  color: $color-warning;
 }

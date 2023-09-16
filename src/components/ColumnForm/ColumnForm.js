@@ -7,24 +7,26 @@ import { addColumn } from '../../redux/store';
 
 
 const ColumnForm = props => {
+
+  const {listId} = props;
   const dispatch = useDispatch();
- const resetForm = () => {
+  const resetForm = () => {
     setTitle('');
     setIcon('');
   }
-  const [title, setTitle] = useState ('');
-  const [icon, setIcon] = useState ('');
+  const [title, setTitle] = useState('');
+  const [icon, setIcon] = useState('');
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(addColumn({ title, icon }));
+    dispatch(addColumn({ title, icon, listId }));
     resetForm();
-}
+  }
 
   return (
     <form className={styles.columnform} onSubmit={handleSubmit}>
       <span>Title:</span> <TextInput value={title} onChange={e => setTitle(e.target.value)} />
       <span>Icon:</span> <TextInput value={icon} onChange={e => setIcon(e.target.value)} />
-      <Button children='Add column'/>
+      <Button children='Add column' />
     </form>
   );
 };
