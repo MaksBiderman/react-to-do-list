@@ -1,15 +1,20 @@
 import styles from './Column.module.scss';
 import Card from '../Card/Card';
 import CardForm from '../CardForm/CardForm';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useMemo } from 'react';
-import { getFilteredCards } from '../../redux/store';
+import { getFilteredCards, toggleCardFavorite } from '../../redux/store';
 
 const Column = (props) => {
 
   const cards = useSelector(state => getFilteredCards(state, props.id));
   console.log('Column render');
   const memoizedCards = useMemo(() => cards, [cards]);
+  const dispatch = useDispatch();
+  const handleToggleFavorite = (cardId) => {
+    // Wywołaj akcję Redux, aby zmienić stan ulubienia karty
+    dispatch(toggleCardFavorite(cardId));
+  };
 
   return (
     <article className={styles.column}>
@@ -19,7 +24,12 @@ const Column = (props) => {
       </h2>
       <ul className={styles.cards}>
         {memoizedCards.map((card) => (
-          <Card key={card.id} title={card.title} />
+          <Card
+            key={card.id}
+            title={card.title}
+            isFavorite={card.isFavorite}
+            onToggleFavorite={() => handleToggleFavorite(card.id)}
+          />
         ))}
       </ul>
       <CardForm columnId={props.id} />
