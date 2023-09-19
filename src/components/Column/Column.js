@@ -3,7 +3,8 @@ import Card from '../Card/Card';
 import CardForm from '../CardForm/CardForm';
 import { useSelector, useDispatch } from 'react-redux';
 import { useMemo } from 'react';
-import { getFilteredCards, toggleCardFavorite } from '../../redux/store';
+import { getFilteredCards } from '../../redux/cardsRedux';
+import { toggleCardFavorite } from '../../redux/cardsRedux';
 
 const Column = (props) => {
 
@@ -27,6 +28,7 @@ const Column = (props) => {
           <Card
             key={card.id}
             title={card.title}
+            cardId={card.id}
             isFavorite={card.isFavorite}
             onToggleFavorite={() => handleToggleFavorite(card.id)}
           />
